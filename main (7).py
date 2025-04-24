@@ -15,7 +15,7 @@ def main():
   hero_name = input()
   fact1 = beg_factory.BeginnerFactory()
   fact2 = exp_factory.ExpertFactory()
-  dwayne_Johnson = hero.Hero(hero_name)
+  the_hero = hero.Hero(hero_name)
   """Initializes the list of enemies: 2 beginner and 1 expert"""
   enemies = [
       fact1.create_random_enemy(),
@@ -27,8 +27,8 @@ def main():
         "\ndefeat them all to win \n")
   
   """Runs until player dies or all enemies are defeated"""
-  while dwayne_Johnson.hp > 0 and enemies:
-    print(f"\n{dwayne_Johnson}")
+  while the_hero.hp > 0 and enemies:
+    print(f"\n{the_hero}")
     for i, enemy in enumerate(enemies, 1):
       print(f"{i}. Attack {enemy}")
 
@@ -42,10 +42,10 @@ def main():
 
     enemy = enemies[enemy_choice] 
     if attack_choice == 1:
-      attack_msg = dwayne_Johnson.melee_attack(enemy)
+      attack_msg = the_hero.melee_attack(enemy)
       print(attack_msg)
     else: 
-      attack_msg = dwayne_Johnson.ranged_attack(enemy)
+      attack_msg = the_hero.ranged_attack(enemy)
       print(attack_msg)
 
     if enemy.hp == 0:
@@ -55,9 +55,9 @@ def main():
         break
     """Chooses a random enemy to attack the player"""
     attacker = random.choice(enemies)
-    print(attacker.melee_attack(dwayne_Johnson))
+    print(attacker.melee_attack(the_hero))
 
-  if dwayne_Johnson.hp > 0:
+  if the_hero.hp > 0:
     print("Congratulations! You have defeated all 3 monsters!.")
   else:
     print("You have been defeated by the monsters!")
